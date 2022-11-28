@@ -11,6 +11,16 @@ int main(int argc, char** argv) {
 
 	heap.printHeap();
 
+	heap.enterScope("test");
+
+	heap.set("a", Variable("string", Data("Certainly.")));
+
+        heap.printHeap();
+	
+	heap.exitScope();
+
+	heap.printHeap();
+
 	std::cout << heap.get("version").data.get<std::string>() << std::endl;
 
         return RETURNVALUE;

@@ -4,9 +4,10 @@
 
 int NEXTLINE = 0;
 
-int main(int argc, char**argv) {
+int main(int argc, char** argv) {
     try {
         heap.set("version", Variable("string", Data("0.1.0")));
+	heap.set("test", Variable("string", Data("Yes")));
 
 	heap.printHeap();
 
