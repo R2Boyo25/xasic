@@ -1,0 +1,7 @@
+0 TRON
+10 LET a::INT = 10
+20 PRINT $a
+30 REM 30 LET a::FLOAT = 1.0
+40 REM 40 PRINT $a
+50 LET a = "yes"
+60 PRINT $a

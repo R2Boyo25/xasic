@@ -1,0 +1,17 @@
+[_default]
+oarg = [
+    "-Ofast",
+    "-g",
+    "-std=c++17"
+]
+out = "xasic"
+before = "python3 source/codegen.py"
+
+[heap]
+inherits = "_default"
+exclude = [".*flex.*", ".*bison.*"]
+
+[[deps]]
+url = "https://github.com/p-ranav/argparse"
+cpath = "include/argparse"
+ipath = "argparse"
