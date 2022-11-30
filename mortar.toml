@@ -11,6 +11,11 @@ before = "python3 source/codegen.py"
 inherits = "_default"
 exclude = [".*flex.*", ".*bison.*"]
 
+[heapr]
+type = "command"
+target = "heap"
+command = "$EXECUTABLE"
+
 [[deps]]
 url = "https://github.com/p-ranav/argparse"
 cpath = "include/argparse"
