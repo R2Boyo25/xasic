@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
 
 	heap.set("a", Variable("string", Data("Certainly.")));
 
-        heap.printHeap();
+    heap.printHeap();
 	
 	heap.exitScope();
 

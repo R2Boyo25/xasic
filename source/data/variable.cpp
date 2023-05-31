@@ -1,4 +1,4 @@
-#include"variable.hpp"
+#include "variable.hpp"
 
 Variable::Variable() {
 

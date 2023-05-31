@@ -1,8 +1,8 @@
-#include"heap.hpp"
-#include<random>
-#include<iostream>
-#include<algorithm>
-#include<regex>
+#include "heap.hpp"
+#include <random>
+#include <iostream>
+#include <algorithm>
+#include <regex>
 
 enum InstructionType {
   Var,
@@ -85,11 +85,11 @@ bool Heap::isLocal(std::string name) {
     switch (identifyInstruction(i)) {
     case InstructionType::Var: {
       if (VariableInstruction(i).variable_name == name) {
-	if (scope != this->getScope()) {
-	  return false;
-	}
+        if (scope != this->getScope()) {
+          return false;
+        }
 
-	return true;
+        return true;
       }
       break;
     }
@@ -157,9 +157,9 @@ void Heap::exitScope() {
       bool isGlobal = false;
       
       for (int j = globals.size() - 1; j >= 0; j--) {
-	if (ins.variable_name == globals[j]) {
-	  isGlobal = true;
-	}
+        if (ins.variable_name == globals[j]) {
+          isGlobal = true;
+        }
       }
 
       if (isGlobal) {
@@ -167,7 +167,7 @@ void Heap::exitScope() {
       }
 
       if (this->isLocal(varname)) {
-	this->heapmap.erase(ins.internal_name);
+        this->heapmap.erase(ins.internal_name);
       }
 
       this->heapins.pop_back();
@@ -197,7 +197,7 @@ std::vector<int> Heap::findReferences(std::string name) {
     switch (identifyInstruction(this->heapins[i])) {
     case InstructionType::Var: {
       if (VariableInstruction(heapins[i]).variable_name == name) {
-	refindexes.push_back(i);
+        refindexes.push_back(i);
       }
       
       break;
@@ -236,7 +236,7 @@ Variable Heap::get(std::string name) {
       VariableInstruction ins(i);
       
       if (ins.variable_name == name) {
-	internal_name = ins.internal_name;
+        internal_name = ins.internal_name;
       }
       
       break;
@@ -258,7 +258,7 @@ bool Heap::alreadyDefinedLocally(std::string name) {
       std::string varname = VariableInstruction(heapins[i]).variable_name;
 
       if (varname == name) {
-	return true;
+        return true;
       }
       
       break;

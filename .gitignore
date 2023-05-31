@@ -6,3 +6,4 @@ source/bison/*.h*
 source/flex/*.cpp
 source/flex/*.h*
 *~
+\#*\#

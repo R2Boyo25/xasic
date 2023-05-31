@@ -12,7 +12,7 @@ typedef float decimaltype;
 typedef std::variant<std::string, std::vector<Data>, inttype, decimaltype> datavariant;
 
 // 1: string
-// 2: vector of data
+// 2: vector of Data
 // 3: integer
 // 4: float
 
