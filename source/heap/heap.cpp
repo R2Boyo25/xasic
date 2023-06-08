@@ -61,10 +61,10 @@ bool Heap::exists(std::string name) {
 
   return false;
   //return this->heapmap.count(name) > 0;
-};
+}
 
 InstructionType identifyInstruction(std::string instruction) {
-  for (int i = 0; i < instructionRegexes.size(); i++) {
+  for (size_t i = 0; i < instructionRegexes.size(); i++) {
     std::regex re = instructionRegexes[i];
     if (std::regex_match(instruction, re)) {
       return static_cast<InstructionType>(i);
@@ -99,6 +99,7 @@ bool Heap::isLocal(std::string name) {
       scope = m[1].str();
       break;
     }
+    default: ;
     }
   }
 
@@ -108,7 +109,7 @@ bool Heap::isLocal(std::string name) {
 std::vector<std::string> Heap::getGlobals() {
   std::vector<std::string> globals = {};
   
-  for (int i=this->heapins.size()-1; i>=0; i--) {
+  for (long i = this->heapins.size() - 1; i >= 0; i--) {
     switch (identifyInstruction(this->heapins[i])) {
     case InstructionType::Global: {
       std::smatch m;
@@ -119,6 +120,7 @@ std::vector<std::string> Heap::getGlobals() {
       return globals;
       break;
     }
+    default: ;
     }
   }
 
@@ -134,20 +136,21 @@ void Heap::exitScope() {
     return;
   }
 
-  int scopebegin = 0;
+  long scopebegin = 0;
   std::vector<std::string> globals = this->getGlobals();
   std::vector<std::string> preserved = {};
 
-  for (int i=this->heapins.size()-1; i>=0; i--) {
+  for (long i = this->heapins.size() - 1; i >= 0; i--) {
     switch (identifyInstruction(this->heapins[i])) {
     case InstructionType::Scope: {
       scopebegin = i;
       break;
     }
+    default: ;
     }
   }
   
-  for (int i=this->heapins.size()-1; i>=scopebegin-1; i--) {
+  for (long i = this->heapins.size() - 1; i >= scopebegin - 1; i--) {
     switch (identifyInstruction(this->heapins[i])) {
     case InstructionType::Var: {
       VariableInstruction ins(heapins[i]);
@@ -156,7 +159,7 @@ void Heap::exitScope() {
 
       bool isGlobal = false;
       
-      for (int j = globals.size() - 1; j >= 0; j--) {
+      for (long j = globals.size() - 1; j >= 0; j--) {
         if (ins.variable_name == globals[j]) {
           isGlobal = true;
         }
@@ -178,10 +181,11 @@ void Heap::exitScope() {
       this->heapins.pop_back();
       break;
     }
+    default: ;
     }
   }
 
-  for (int i = preserved.size() - 1; i >= 0; i--) {
+  for (long i = preserved.size() - 1; i >= 0; i--) {
     this->heapins.push_back(preserved[i]);
   }
 };
@@ -193,7 +197,7 @@ std::vector<int> Heap::findReferences(std::string name) {
     return refindexes;
   }
 
-  for (int i=this->heapins.size()-1; i>=0; i--) {
+  for (long i = this->heapins.size() - 1; i >= 0; i--) {
     switch (identifyInstruction(this->heapins[i])) {
     case InstructionType::Var: {
       if (VariableInstruction(heapins[i]).variable_name == name) {
@@ -202,6 +206,7 @@ std::vector<int> Heap::findReferences(std::string name) {
       
       break;
     }
+    default: ;
     }
   }
 
@@ -209,7 +214,7 @@ std::vector<int> Heap::findReferences(std::string name) {
 };
 
 std::string Heap::getScope() {
-  for (int i=this->heapins.size()-1; i>=0; i--) {
+  for (long i = this->heapins.size() - 1; i >= 0; i--) {
     switch (identifyInstruction(this->heapins[i])) {
     case InstructionType::Scope: {
       std::smatch m;
@@ -217,6 +222,7 @@ std::string Heap::getScope() {
       
       return m[1].str();
     }
+    default: ;
     }
   }
 
@@ -241,6 +247,7 @@ Variable Heap::get(std::string name) {
       
       break;
     }
+    default: ;
     }
   }
 
@@ -252,7 +259,7 @@ void Heap::setGlobal(std::string name) {
 }
 
 bool Heap::alreadyDefinedLocally(std::string name) {
-  for (int i=this->heapins.size()-1; i>=0; i--) {
+  for (long i = this->heapins.size() - 1; i >= 0; i--) {
     switch (identifyInstruction(this->heapins[i])) {
     case InstructionType::Var: {
       std::string varname = VariableInstruction(heapins[i]).variable_name;
@@ -264,8 +271,9 @@ bool Heap::alreadyDefinedLocally(std::string name) {
       break;
     }
     case InstructionType::Scope: {
-      return false;;
+      return false;
     }
+    default: ;
     }
   }
 

@@ -1,9 +1,9 @@
 #pragma once
 
-#include<vector>
-#include<map>
-#include<string>
-#include"../data/variable.hpp"
+#include <vector>
+#include <map>
+#include <string>
+#include "../data/variable.hpp"
 
 class Heap {
 public:
