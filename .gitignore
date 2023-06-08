@@ -7,3 +7,4 @@ source/flex/*.cpp
 source/flex/*.h*
 *~
 \#*\#
+*.o
