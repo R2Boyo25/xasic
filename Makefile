@@ -8,8 +8,8 @@ override CXXFLAGS += -std=c++17
 $(EXEC): $(OBJ)
 	$(CXX) $(CFLAGS) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
 
-%.c: %.lex
-	flex -o $@ $^
+%.c %.h &: %.lex
+	flex --header-file=$*.h -o $*.c $^
 
 .PHONY: clean run
 clean:
