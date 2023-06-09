@@ -28,5 +28,5 @@ public:
   Data(datavariant data);
   template <typename T> T get() {
     return std::get<T>(data);
-  };
+  }
 };

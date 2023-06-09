@@ -1,13 +1,15 @@
-# SRC += source/main.cpp source/globals.cpp source/data/data.cpp source/data/variable.cpp source/heap/heap.cpp
 EXEC := xasic
-SRC := $(shell find src/ -type f -name '*.cpp')
+SRC := $(shell find src/ -type f -name '*.cpp') $(shell find src/ -type f -name '*.lex')
 OBJ := $(addsuffix .o,$(basename $(SRC)))
 
-
-CXXFLAGS  = -Ofast
-CXXFLAGS += -std=c++17
+CXXFLAGS  = -Ofast -Wall -Wextra -Wpedantic
+override CXXFLAGS += -std=c++17
 
 $(EXEC): $(OBJ)
+	$(CXX) $(CFLAGS) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
+
+%.c: %.lex
+	flex -o $@ $^
 
 .PHONY: clean run
 clean:

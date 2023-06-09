@@ -13,9 +13,9 @@ IDENT    [a-zA-Z][a-zA-Z0-9]*
 .+        printf("%d: That's a flippin' lexin' error there, bud. '%s'\n", yyget_lineno(), yytext);
 
 %%
-
+/*
 int main(int argc, char **argv) {
-  ++argv, --argc;  /* skip over program name */
+  ++argv, --argc;  // skip program name
   if (argc > 0)
     yyin = fopen(argv[0], "r");
   else
@@ -23,3 +23,4 @@ int main(int argc, char **argv) {
      
   yylex();
 }
+*/
