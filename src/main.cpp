@@ -1,36 +1,18 @@
 #include "globals.hpp"
-#include "data/variable.hpp"
-#include <iostream>
-
-int NEXTLINE = 0;
-
+extern "C" {
+#include "flex/xasic.h"
+}
+  
 int main(int argc, char** argv) {
-  (void)argc;
-  (void)argv;
+  argc--; argv++;
 
-  try {
-    heap.set("version", Variable("string", Data("0.1.0")));
-	heap.set("test", Variable("string", Data("Yes")));
-
-	heap.printHeap();
-	heap.enterScope("test");
-
-	heap.set("a", Variable("string", Data("Certainly.")));
-
-    std::cout << "A: " << heap.get("a").data.get<std::string>() << std::endl;
-    
-    heap.printHeap();
-	heap.exitScope();
-	heap.printHeap();
-
-	std::cout << heap.get("version").data.get<std::string>() << std::endl;
-
-    return RETURNVALUE;
-  } catch (char const* ex) {
-    std::cout << "ERROR on line " << NEXTLINE << ":\n\t" << ex << std::endl;
-    return 1;
-  } catch (const std::string& ex) {
-    std::cout << "ERROR on line " << NEXTLINE << ":\n\t" << ex << std::endl;
-    return 1;
+  if (argc > 0) {
+    yyin = fopen(argv[0], "r");
+  } else {
+    yyin = stdin;
   }
+    
+  yylex();
+  
+  return RETURNVALUE;
 }

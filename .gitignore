@@ -5,3 +5,4 @@ source/flex/*.h*
 *~
 \#*\#
 *.o
+*.d
