@@ -3,9 +3,9 @@ SRC := $(shell find src/ -type f -name '*.cpp') $(shell find src/ -type f -name 
 OBJ := $(addsuffix .o,$(basename $(SRC)))
 
 CXXFLAGS  = -Ofast -Wall -Wextra -Wpedantic
+# -MMD does "free" dependency file generation.
 override CXXFLAGS += -std=c++17 -MMD
 override CFLAGS += -MMD
-
 
 $(EXEC): $(OBJ)
 	$(CXX) $(CFLAGS) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
