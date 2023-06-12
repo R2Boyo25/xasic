@@ -1,4 +1,4 @@
-0 TRON
+0  TRON
 10 LET a::INT = 10
 20 PRINT $a
 30 REM 30 LET a::FLOAT = 1.0

@@ -1,4 +1,0 @@
-// test.xas
-sub abc do
-    
-end

@@ -1,0 +1,4 @@
+// -*-basic-*-
+
+print true.to<str>()
+print false.to<str>()

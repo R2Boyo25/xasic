@@ -46,7 +46,7 @@ VariableInstruction::VariableInstruction(std::string instruction) {
   this->internal_name = variable_match[2].str();
 }
 
-Heap::Heap() {};
+Heap::Heap() {}
 
 bool instructionIsName(std::string instruction, std::string name) {
   return VariableInstruction(instruction).variable_name == name;
@@ -104,7 +104,7 @@ bool Heap::isLocal(std::string name) {
   }
 
   return true;
-};
+}
 
 std::vector<std::string> Heap::getGlobals() {
   std::vector<std::string> globals = {};
@@ -129,7 +129,7 @@ std::vector<std::string> Heap::getGlobals() {
 
 void Heap::enterScope(std::string name) {
   heapins.push_back("s " + name);
-};
+}
 
 void Heap::exitScope() {
   if (this->getScope() == "") {
@@ -188,7 +188,7 @@ void Heap::exitScope() {
   for (long i = preserved.size() - 1; i >= 0; i--) {
     this->heapins.push_back(preserved[i]);
   }
-};
+}
 
 std::vector<int> Heap::findReferences(std::string name) {
   std::vector<int> refindexes = {};
@@ -211,7 +211,7 @@ std::vector<int> Heap::findReferences(std::string name) {
   }
 
   return refindexes;
-};
+}
 
 std::string Heap::getScope() {
   for (long i = this->heapins.size() - 1; i >= 0; i--) {
@@ -227,7 +227,7 @@ std::string Heap::getScope() {
   }
 
   return "";
-};
+}
 
 Variable Heap::get(std::string name) {
   if (!this->exists(name)) {
@@ -252,7 +252,7 @@ Variable Heap::get(std::string name) {
   }
 
   return this->heapmap[internal_name];
-};
+}
 
 void Heap::setGlobal(std::string name) {
   this->heapins.push_back("g " + name);
@@ -288,7 +288,7 @@ void Heap::set(std::string name, Variable value) {
   }
 
   this->heapmap[internal_name] = value;
-};
+}
 
 void Heap::printHeap() {
   std::cout << "== heap dump ==" << std::endl;

@@ -2,7 +2,7 @@
 
 Variable::Variable() {
 
-};
+}
 
 Variable::Variable(std::string type, Data data, std::string edata) {
     this->type  = type;
