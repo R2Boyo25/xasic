@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
     yyin = stdin;
   }
     
-  yylex();
+  yyparse();
   
   return RETURNVALUE;
 }

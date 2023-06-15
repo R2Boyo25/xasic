@@ -1,6 +1,8 @@
 // -*-basic-*-
 fn func() returning void do
    print "Function called!"
+   // or print("Function called!")
 end
 
 call func
+// or func()

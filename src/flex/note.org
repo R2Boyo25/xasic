@@ -1,0 +1,5 @@
+#+TITLE: LEXING NOTE
+
+When including another file, you will just include another source file.
+The lexer will switch lexing modes when encountering an include and generate only declarations from definitions.
+(using Start Conditions)

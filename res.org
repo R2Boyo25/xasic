@@ -1,1 +1,2 @@
-- https://pgrandinetti.github.io/compilers/page/implementation-recursive-descent-parser/
+- Read this if I ever want to switch to a hand-written parser & lexer:
+    https://pgrandinetti.github.io/compilers/page/implementation-recursive-descent-parser/
