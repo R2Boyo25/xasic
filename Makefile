@@ -50,4 +50,8 @@ depclean:
 genclean:
 	rm -f $(LEXFILES:%.lex=%.c) $(LEXFILES:%.lex=%.h) $(YACCFILES:%.y=%.c) $(YACCFILES:%.y=%.h)
 
+.PHONY: install
+install: $(EXEC)
+	install $^ $(addprefix /usr/bin/,$^)
+
 -include $(OBJ:%.o=%.d)
