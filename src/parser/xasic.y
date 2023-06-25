@@ -4,6 +4,7 @@
 
   #include <stdio.h>
   #include "../flex/xasic.h"
+  #include <stdbool.h>
   
   void yyerror(char* message) {
     printf("%s:%d: %s at '%s'", location, yyget_lineno(), message, yytext);
