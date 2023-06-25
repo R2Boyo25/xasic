@@ -4,6 +4,7 @@
   extern char *location;
   #define _POSIX_C_SOURCE 200809L
   #include <string.h>
+  #include <stdbool.h>
   #include "../parser/xasic.h"
 }
 
