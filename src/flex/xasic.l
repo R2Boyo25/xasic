@@ -8,7 +8,7 @@
   #include "../parser/xasic.h"
 }
 
-%option noyywrap yylineno bison-bridge bison-locations batch never-interactive
+%option yylineno bison-bridge bison-locations batch never-interactive noinput nounput noyywrap
 %x INCLUDE
 
 DIGIT    [0-9]
